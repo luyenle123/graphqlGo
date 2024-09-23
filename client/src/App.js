@@ -15,21 +15,24 @@ const client = new ApolloClient(
 );
 
 function App() {
-  const [type, setType] = useState(null);
+  const [type, setType] = useState('C');
 
   const handleClick = (type) => {
     setType(type);
   }  
 
   return (
+    <div>
+      <div className='text-center font-bold'>GraphQLGo Client</div>
       <div className='m-3'>
-        <div>GraphQLGo Client</div>
-        <div>
-          <div className='w-full h-14'>
-            <button className='button' onClick={() => handleClick('C')}>Customer</button>
-            <button className='button' onClick={() => handleClick('P')}>Product</button>
-            <button className='button' onClick={() => handleClick('O')}>Orders</button>
-          </div>
+        <div className='w-2/12 h-svh float-left'>
+          <div className='w-full h-auto grid'>
+              <button className='button' onClick={() => handleClick('C')}>Customer</button>
+              <button className='button' onClick={() => handleClick('O')}>Orders</button>
+              <button className='button' onClick={() => handleClick('P')}>Product</button>              
+            </div>
+        </div>
+        <div className='float-left w-10/12'>          
           <ApolloProvider client={client}>
             {type === 'C' && <CustomerList/> }
 
@@ -39,6 +42,7 @@ function App() {
           </ApolloProvider>
         </div>
       </div>
+    </div>
   );
 }
 

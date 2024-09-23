@@ -17,6 +17,7 @@ const getAllProducts = gql`
             title
             description
             price
+            thumbnail
         }
     }
 `
@@ -40,6 +41,7 @@ const getCustomer = gql`
 
             orders {
               id
+              totalProduct
               orderDate
             }            
         }

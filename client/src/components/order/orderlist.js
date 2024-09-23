@@ -18,8 +18,8 @@ const OrderList = () => {
 
   return (
     <>
-        <div>
-            Order List:
+        <div className='w-full'>
+            <div>Order List: {data.orders.length}</div>
 
             <div className='flex w-full'>
                 {data && data.orders && data.orders.map(c => (
@@ -32,9 +32,7 @@ const OrderList = () => {
                 ))}                
             </div>
 
-            <div>
-                { idSelected && <OrderDetail id={idSelected}/> }
-            </div>
+            { idSelected && <OrderDetail id={idSelected}/> }
         </div>
     </>
   )

@@ -30,6 +30,10 @@ body {
 
 @layer components{
   .button{
-    @apply py-2 px-5 mr-2 bg-slate-200;
+    @apply py-2 px-5 mr-2 mb-2 bg-slate-200;
+  }
+
+  .line-item-col{
+    @apply text-center border-r border-solid border-gray-300;
   }
 }

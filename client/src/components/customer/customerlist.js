@@ -18,22 +18,22 @@ const CustomerList = () => {
 
   return (
     <>
-        <div>
-            Customers:
+        <div>Customers: {data.customers.length}</div>
 
-            <div className='flex w-full'>
-                {data && data.customers && data.customers.map(c => (
-                    <div className='m-1' key={c.id} >
-                        <div className='w-80 p-3 border border-dotted border-gray-300 cursor-pointer' onClick={() => handleClick(c.id)}>
-                            <div>{c.id}</div>
-                        </div>
+        <div className='flex flex-wrap justify-left w-full'>
+            {data && data.customers && data.customers.map(c => (
+                <div className='m-1' key={c.id} >
+                    <div className='w-80 p-3 border border-dotted border-gray-300 cursor-pointer' onClick={() => handleClick(c.id)}>
+                        <div>{c.id}</div>
+                        <div>{c.firstname}</div>
+                        <div>{c.lastname}</div>
                     </div>
-                ))}                
-            </div>
+                </div>
+            ))}                
+        </div>
 
-            <div>
-                { cusSelected && <CustomerDetail cusId={cusSelected}/> }
-            </div>
+        <div className='mt-5 w-full'>
+            { cusSelected && <CustomerDetail cusId={cusSelected}/> }
         </div>
     </>
   )

@@ -6,6 +6,7 @@ const typeDefs = gql`
 		title: String
 		description: String
 		price: Int
+		thumbnail: String
 		orders: [Order]
 	}
 	
