@@ -3,11 +3,11 @@ const { ApolloServer } = require('apollo-server-express')
 const mongoose = require('mongoose')
 
 // Load schema & resolvers
-
 const typeDefs = require('./schema/schema');
 const resolvers = require('./resolver/resolver');
+//const resolvers = require('./resolver/dummyResolver');
 
-const mongoDataMethods = require('./data/mongoDb')
+const dbMethods = require('./data/mongoDb')
 
 const connectDb = async() => {
     try{
@@ -23,9 +23,8 @@ connectDb();
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-    context: () => ({mongoDataMethods})
+    context: () => ({ dbMethods })
 })
-
 
 const main = async () => {
     const app = express();
