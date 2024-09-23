@@ -16,6 +16,7 @@ const getAllProducts = gql`
             id
             title
             description
+            price
         }
     }
 `
@@ -30,4 +31,45 @@ const getAllOrders = gql`
     }
 `
 
-export { getAllCustomers, getAllOrders, getAllProducts }
+const getCustomer = gql`
+    query($id: ID!){
+        customer(id: $id) {
+            id
+            firstname
+            lastname
+
+            orders {
+              id
+              orderDate
+            }            
+        }
+    }
+`
+
+const getOrder = gql`
+    query($id: ID!){
+        order(id: $id) {
+            id
+            totalProduct
+            orderDate
+
+            customer {
+                firstname
+                lastname
+            }            
+
+            orderLines {
+                id
+                qty
+
+                product {
+                    id
+                    title
+                    price
+                }
+            }
+        }
+    }
+`
+
+export { getAllCustomers, getAllOrders, getAllProducts, getCustomer, getOrder }
